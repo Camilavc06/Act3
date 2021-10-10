@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Semana 34</title>
+<style>
+.fle{
+    position: absolute;
+    top: 1%;
+    left: 35%;
+    width: 31.4%;
+    height: 35%;
+    background-image: url(flecha.gif);
+}
+.listo{
+    position: absolute;
+    top: 43%;
+    left: 29%;
+    width: 42%;
+    height: 25%;
+    border: solid 3px;
+    background: #EE82EE;
+    font-family: a3;
+    font-size: 120px;
+    border-radius: 150px;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+.cuadropreguntas{
+    position: absolute;
+    top: 5%;
+    left: 23%;
+    width: 40%;
+    height: 35%;
+    display: flex;
+    border: black solid 3px;
+    opacity: 0;
+    background: #F0E68C;
+    font-family: a2;
+    padding-left: 150px;
+    border-radius: 20px;
+    font-size: 250px;
+}
+.responder{
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    width: 20%;
+    height: 20%;
+    border: black solid 3px;
+    opacity: 0;
+    background: #F0E68C;
+    font-family: a3;
+    font-size: 80px;
+    border-radius: 50px;
+}
+.int{
+    position: absolute;
+    top: 75%;
+    left: 78%;
+    width: 14%;
+    height: 9%;
+    display: flex;
+    border: black solid 3px;
+    opacity: 0;
+    background: #98FB98;
+    font-family: a2;
+    font-size: 40px;
+    padding-left: 13px;
+    border-radius: 50px;
+    padding-top: 5px;
+    box-sizing:border-box;
+}
+.points{
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    width: 15%;
+    height: 10%;
+    display: flex;
+    border: black solid 3px;
+    opacity: 0;
+    background: #F0E68C;
+    font-family: a2;
+    font-size: 40px;
+    border-radius: 50px;
+    padding-left:10px;
+    padding-top:13px;
+    box-sizing: border-box;
+}
+.time{
+    position: absolute;
+    top: 70%;
+    left: 3%;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    border: black solid 3px;
+    opacity: 0;
+    background: #98FB98;
+    font-family: a3;
+    font-size: 80px;
+    border-radius: 50px;
+    padding-left:50px;
+    box-sizing: border-box;
+}
+.sound{
+    position: absolute;
+    top: 658px;
+    opacity: 0;
+}
+.suma{
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    width: 18%;
+    height: 37%;
+    opacity: 0;
+    background-image: url(suma.jfif);
+}
+.resta{
+    position: absolute;
+    top: 5%;
+    left: 75%;
+    width: 25%;
+    height: 31%;
+    opacity: 0;
+    background-image: url(resta.jfif);
+}
+        @font-face{
+ font-family:a1;
+ src: url(fu1.otf);
+}
+@font-face{
+ font-family:a2;
+ src: url(fu2.ttf);
+}
+@font-face{
+ font-family:a3;
+ src: url(fu3.otf);
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+</style>
+</head>
+<div class="listo" id="read" onclick="ready()">¿Estás listo?</div>
+<div class="fle" id="flecha"></div>
+<div class="suma" id="suma"></div>
+<div class="resta" id="resta"></div>
+<div class="cuadropreguntas" id="cp" onclick="star()"></div>
+<div class="resul" id="re"></div>
+<div class="int" id="entra" onclick="send()">Registrar</div>
+<div class="points" id="point">Puntos:</div>
+<div class="time" id="tim"></div>
+<audio src="musicadefondo.mp3" controls class="sound" id="playsong"></audio>
+<form>
+<input type="text" id="respon" class="responder"  placeholder="Respuesta">
+</form>
+<script>
+function ready() {
+    playsong.play();
+    cp.style.opacity=1;
+    re.style.opacity=1;
+    entra.style.opacity=1;
+    point.style.opacity=1;
+    tim.style.opacity=1;
+    respon.style.opacity=1;
+    read.style.opacity=0.;
+    flecha.style.opacity=0.;
+    suma.style.opacity=1;
+    resta.style.opacity=1;
+}
+intervalo=setInterval(cronometro,1000);
+    function star(){
+        var un=Math.floor ((Math.random()*(7-1))+1)
+        var dos=Math.floor ((Math.random()*(7-1))+1)
+        var tre=Math.floor ((Math.random()*(3-1))+1)
+        if (tre==1) {
+            dos="+";
+            resp=un+dos;
+        }
+      else{
+        if (tre==2) {
+            dos="-";
+            resp=un-dos;
+        }                 
+      }
+          cp.innerHTML=un+" "+" "+dos+" "+tre;
+    }
+    x=60;
+    tim.innerHTML=x;
+    function cronometro() {
+            if (x==0){
+                tim.innerHTML=x;
+                cp.style.display="none";
+                re.style.display="none";
+                entra.style.display="none";
+                point.style.display="none"; 
+                tim.style.display="none";
+                respon.style.display="none";
+                clearIntervel(intervalo);
+            }
+            else
+            {
+                tim.innerHTML=x;
+                x=x-1;
+            }
+        } 
+</script>
+<body>
+</body>
+</body>
+</html>
